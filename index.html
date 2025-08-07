@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aeysha Tabassum - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h2 class="logo">Aeysha</h2>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="theme-switcher">
+        <input type="checkbox" id="theme-toggle" />
+        <label for="theme-toggle" class="theme-label" title="Switch Theme">
+          <span class="icon-sun">🌞</span>
+          <span class="icon-moon">🌙</span>
+        </label>
+      </div>
+    </nav>
+  </header>
+
+  <section id="home" class="section home">
+    <h1>Hi, I'm <span class="highlight">Aeysha Tabassum</span></h1>
+    <div class="profile-pic">
+      <img src="myphoto.jpg" alt="My Profile Picture">
+    </div>
+    <p class="intro">CSE Undergraduate at University of Asia Pacific | Tech Explorer | Plant Lover</p>
+    <p>Welcome to my portfolio!</p>
+  </section>
+
+  <section id="about" class="section about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm Aeysha, a 3rd-year Computer Science and Engineering student. I enjoy learning programming languages like <span class="lang">C</span>, <span class="lang">C++</span>, <span class="lang">Java</span>, <span class="lang">Python</span>, and web technologies. I am always curious about how things work and love solving problems, exploring new ideas, and improving my skills through practice & projects.
+    </p>
+  </section>
+
+  <section id="skills" class="section skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="chart-skill">
+        <span>C</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 80%;">80%</div></div>
+      </div>
+      <div class="chart-skill">
+        <span>C++</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 75%;">75%</div></div>
+      </div>
+      <div class="chart-skill">
+        <span>Java</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 60%;">60%</div></div>
+      </div>
+      <div class="chart-skill">
+        <span>Python</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 55%;">55%</div></div>
+      </div>
+      <div class="chart-skill">
+        <span>HTML</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 70%;">70%</div></div>
+      </div>
+      <div class="chart-skill">
+        <span>CSS</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 60%;">60%</div></div>
+      </div>
+      <div class="chart-skill">
+        <span>SQL</span>
+        <div class="chart-bar"><div class="chart-fill" style="width: 75%;">75%</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies" class="section hobbies">
+    <h2>My Hobbies</h2>
+    <div class="hobbies-container">
+      <div class="hobby-item">
+        <h3>Nature & Sky Photography</h3>
+        <img src="sky.jpg" alt="Nature and Sky Photography">
+      </div>
+      <div class="hobby-item">
+        <h3>Cooking</h3>
+        <img src="cooking.jpg" alt="Cooking">
+      </div>
+      <div class="hobby-item">
+        <h3>Escaping into Story Books</h3>
+        <img src="books.jpg" alt="Story Books">
+      </div>
+      <div class="hobby-item">
+        <h3>Gardening</h3>
+        <img src="Gardening.jpg" alt="Gardening">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <h2>Contact Me</h2>
+    <p><strong>Email:</strong> <a href="mailto:aeyshatabassum@gmail.com">aeyshatabassum@gmail.com</a></p>
+    <p><strong>Location:</strong> Dhaka, Bangladesh</p>
+    <div class="social-links">
+      <!-- <a href="https://linkedin.com" target="_blank" title="LinkedIn"><img src="linkedin-icon.png" alt="LinkedIn"></a> -->
+      <a href="https://github.com/Aeysha14" target="_blank" title="GitHub"><img src="image.png" alt="GitHub"></a>
+      <!-- Add more social icons as needed -->
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Aeysha Tabassum. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Theme changer logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    function setTheme(isDark) {
+      if(isDark) {
+        root.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        root.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme === 'dark') {
+      themeToggle.checked = true;
+      setTheme(true);
+    }
+    themeToggle.addEventListener('change', function() {
+      setTheme(this.checked);
+    });
+
+    // Highlight active section in nav
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    function activateNavLink() {
+      let index = sections.length;
+      while(--index && window.scrollY + 80 < sections[index].offsetTop) {}
+      navLinks.forEach((link) => link.classList.remove('active'));
+      if(navLinks[index]) navLinks[index].classList.add('active');
+    }
+    window.addEventListener('scroll', activateNavLink);
+    window.addEventListener('DOMContentLoaded', activateNavLink);
+  </script>
+</body>
+</html>
